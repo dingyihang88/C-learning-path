@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+  int getValue(char c)
+  {
+    switch(c)
+    {
+      case 'I':return 1;
+      case 'V':return 5;
+      case 'X':return 10;
+      case 'L':return 50;
+      case 'C':return 100;
+      case 'D':return 500;
+      case 'M':return 1000;
+      default: ;
+    }
+  }
+  int main()
+  {
+  int n;
+  scanf("%d",&n);
+  char a[105];
+  for(int i=0;i<n;i++)
+  {
+    scanf("%s",a);
+    int sum=0;
+    int rightVal=0;
+  for(int j=strlen(a)-1;j>=0;j--)
+  {
+    int current=getValue(a[j]);
+    if(current<rightVal)
+    {
+      sum=sum-current;
+    }
+    else
+    {
+      sum=sum+current;
+    }
+    rightVal=current;
+  }
+  printf("%d\n",sum);
+  }
+  return 0;
+}
